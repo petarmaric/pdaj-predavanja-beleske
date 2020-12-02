@@ -1,3 +1,4 @@
 .vscode/
 TODO.rst
 __pycache__/
+*.sqlite3
