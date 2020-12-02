@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "pdaj"
+version = "0.2.0"
+description = "Demo za PDAJ predmet, predavanja 3"
+authors = ["Petar Marić <petar.maric@gmail.com>"]
+license = "BSD"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+Django = "~3.1.0"
+numpy = "~1.19"
+requests = "~2.25.0"
+djangorestframework = "~3.12.2"
+drf-yasg = "^1.20.0"
+
+[tool.poetry.dev-dependencies]
+ipython = "*"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
