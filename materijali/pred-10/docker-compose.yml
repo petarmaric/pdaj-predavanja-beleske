@@ -1,0 +1,28 @@
+version: "3.3"
+
+services:
+  broker:
+    image: redis:6.0
+
+  worker:
+    build: .
+    depends_on:
+      - broker
+    user: "${DOCKER_USER}"
+    volumes:
+      - .:/app
+    environment:
+      CELERY_RESULT_BACKEND: redis://broker:6379/0
+      CELERY_BROKER_URL: redis://broker:6379/0
+      CELERY_WORKER_CONCURRENCY: 1
+
+  monitor:
+    image: mher/flower:0.9.7
+    ports:
+      - 5555:5555
+    depends_on:
+      - broker
+      - worker
+    environment:
+      CELERY_RESULT_BACKEND: redis://broker:6379/0
+      CELERY_BROKER_URL: redis://broker:6379/0
